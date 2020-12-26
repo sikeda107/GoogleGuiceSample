@@ -9,7 +9,7 @@ import com.google.inject.Injector;
 
 public class App {
     public static void main(String[] args) {
-        sample3();
+        sample4();
     }
 
     private static void sample1(){
@@ -43,5 +43,14 @@ public class App {
         });
         InjectSample2 injectSample2 = injector.getInstance(InjectSample2.class);
         injectSample2.superExecute();
+    }
+
+    private static void sample4(){
+        Injector injector = Guice.createInjector(new AbstractModule() {
+            protected void configure() {
+            }
+        });
+        Client2 client2 = injector.getInstance(Client2.class);
+        client2.execute();
     }
 }
