@@ -21,7 +21,16 @@ dependencies {
     testImplementation 'junit:junit:4.13'
 
     // https://mvnrepository.com/artifact/com.google.inject/guice
-    implementation group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    /* ---------
+    以下の警告が出るので No AOP にする
+    WARNING: An illegal reflective access operation has occurred
+    WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/Users/sikeda/.gradle/caches/modules-2/files-2.1/com.google.inject/guice/4.2.3/2ea992d6d7bdcac7a43111a95d182a4c42eb5ff7/guice-4.2.3.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+    WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+    WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+    WARNING: All illegal access operations will be denied in a future release
+    --------- */
+    // implementation group: 'com.google.inject', name: 'guice', version: '4.2.3'
+    implementation group: 'com.google.inject', name: 'guice', version: '4.2.3', classifier: 'no_aop'
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
