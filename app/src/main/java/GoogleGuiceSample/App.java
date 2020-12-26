@@ -9,6 +9,10 @@ import com.google.inject.Injector;
 
 public class App {
     public static void main(String[] args) {
+        sample3();
+    }
+
+    private static void sample1(){
         Injector injector = Guice.createInjector(new MyModule());
         Client client = injector.getInstance(Client.class);
         client.execute();
@@ -19,5 +23,25 @@ public class App {
             // bind(インタフェース).to(実装クラス)
             bind(Service.class).to(ServiceImpl.class);
         }
+    }
+
+    private static void sample2(){
+        Injector injector = Guice.createInjector(new AbstractModule() {
+            protected void configure() {
+                bind(Service.class).to(ServiceImpl.class);
+            }
+        });
+        InjectSample injectSample = injector.getInstance(InjectSample.class);
+        injectSample.execute();
+    }
+
+    private static void sample3(){
+        Injector injector = Guice.createInjector(new AbstractModule() {
+            protected void configure() {
+                bind(Service.class).to(ServiceImpl.class);
+            }
+        });
+        InjectSample2 injectSample2 = injector.getInstance(InjectSample2.class);
+        injectSample2.superExecute();
     }
 }
