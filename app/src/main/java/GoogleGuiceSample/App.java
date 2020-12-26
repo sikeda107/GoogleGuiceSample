@@ -3,12 +3,21 @@
  */
 package GoogleGuiceSample;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Injector injector = Guice.createInjector(new MyModule());
+        Client client = injector.getInstance(Client.class);
+        client.execute();
+    }
+    static public class MyModule extends AbstractModule {
+        @Override
+        protected void configure() {
+            // bind(インタフェース).to(実装クラス)
+            bind(Service.class).to(ServiceImpl.class);
+        }
     }
 }

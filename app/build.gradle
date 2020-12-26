@@ -20,6 +20,9 @@ dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
 
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+    implementation group: 'com.google.inject', name: 'guice', version: '4.2.3'
+
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 }
